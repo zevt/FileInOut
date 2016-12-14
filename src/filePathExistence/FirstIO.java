@@ -1,3 +1,4 @@
+package filePathExistence;
 
 import java.io.File;
 
@@ -15,6 +16,7 @@ public class FirstIO {
 		p("Abs Path: " + f1.getAbsolutePath());
 		p("Parent: " + f1.getParent());
 		p(f1.exists() ? "exists" : "does not exist");
-
+		p(" Below is absolute path of current working directory");
+		p(System.getProperty("user.dir"));
 	}
 }
