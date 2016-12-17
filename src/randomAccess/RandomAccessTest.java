@@ -17,7 +17,7 @@ public class RandomAccessTest {
 		try (DataOutputStream out = new DataOutputStream(new FileOutputStream(FILE_NAME))) {
 			// save all employee records to the file employee.dat
 			for (Employee e : staff)
-				writeData(out, e);
+				writeBlockData(out, e);
 		}
 
 		try (RandomAccessFile in = new RandomAccessFile(FILE_NAME, "r")) {
@@ -31,7 +31,7 @@ public class RandomAccessTest {
 			for (int i = n - 1; i >= 0; i--) {
 				newStaff[i] = new Employee();
 				in.seek(i * Employee.RECORD_SIZE);
-				newStaff[i] = readData(in);
+				newStaff[i] = readBlockData(in);
 			}
 
 			// print the newly read employee records
@@ -48,7 +48,7 @@ public class RandomAccessTest {
 	 * @param e
 	 *            the employee
 	 */
-	public static void writeData(DataOutput out, Employee e) throws IOException {
+	public static void writeBlockData(DataOutput out, Employee e) throws IOException {
 		DataIO.writeFixedString(e.getName(), Employee.NAME_SIZE, out);
 		out.writeDouble(e.getSalary());
 
@@ -66,7 +66,7 @@ public class RandomAccessTest {
 	 *            the data input
 	 * @return the employee
 	 */
-	public static Employee readData(DataInput in) throws IOException {
+	public static Employee readBlockData(DataInput in) throws IOException {
 		String name = DataIO.readFixedString(Employee.NAME_SIZE, in);
 		double salary = in.readDouble();
 		int y = in.readInt();
