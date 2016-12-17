@@ -72,6 +72,6 @@ public class RandomAccessTest {
 		int y = in.readInt();
 		int m = in.readInt();
 		int d = in.readInt();
-		return new Employee(name, salary, y, m - 1, d);
+		return new Employee(name, salary, y, m, d);
 	}
 }
