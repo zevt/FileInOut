@@ -1,11 +1,11 @@
-package randomAccess;
+package randomAccess2;
 
 import java.util.*;
 
 public class Employee {
 	public static final int NAME_SIZE = 40;
 	public static final int RECORD_SIZE = 2 * NAME_SIZE + 8 + 4 + 4 + 4;
-	// salary 8, day, month, year 4 each
+
 	private String name;
 	private double salary;
 	private Date hireDay;
